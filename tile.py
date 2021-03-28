@@ -14,9 +14,7 @@ class Tile:
 
     def matches(self, tile):
         return (self.matches_section(self.t_c, tile.t_c) and self.matches_section(self.r_c, tile.r_c)
-            and self.matches_section(self.b_c, tile.b_c) and self.matches_section(self.l_c, tile.l_c))
-
-
+                and self.matches_section(self.b_c, tile.b_c) and self.matches_section(self.l_c, tile.l_c))
 
     def __repr__(self):
         return "t_c: {}, r_c: {}, b_c: {}, l_c: {}".format(self.t_c, self.r_c, self.b_c, self.l_c)

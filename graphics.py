@@ -2,8 +2,9 @@ import turtle
 import math
 from tile import *
 
-cell_size = 40
+cell_size = 35
 
+colors = {"1": "red", "2": "darkblue", "3":"black", "4": "yellow"}
 
 def draw_pattern(grid):
     num_rows = len(grid)
@@ -13,13 +14,13 @@ def draw_pattern(grid):
     screen_height = cell_size * num_rows
 
     screen = turtle.getscreen()
+    screen.colormode(255)
     screen.setup(screen_width, screen_height)
 
     dave = turtle.Turtle()
     dave.speed(0)
     dave.penup()
     dave.goto(-screen_width / 2, screen_height / 2)
-
     print("Turtle pos: {}".format(dave.pos()))
 
     for r in range(num_rows):
@@ -33,6 +34,8 @@ def draw_pattern(grid):
         dave.right(90)
         dave.forward(cell_size)
         dave.left(90)
+
+    screen.getcanvas().postscript(file="output.eps")
     turtle.mainloop()
 
 
@@ -62,9 +65,11 @@ def draw_triangle(dave, color):
 
     dave.pendown()
     if color == None:
-        dave.fillcolor("white")
+        #dave.color(colors[color], colors[color])
+        dave.fillcolor(colors[color])
     else:
-        dave.fillcolor(color)
+        dave.fillcolor(colors[color])
+        #dave.color(colors[color], colors[color])
     dave.begin_fill()
     dave.forward(dist1)
     dave.right(135)
