@@ -2,7 +2,7 @@ import turtle
 import math
 from tile import *
 
-cell_size = 100
+cell_size = 40
 
 
 def draw_pattern(grid):
@@ -25,7 +25,6 @@ def draw_pattern(grid):
     for r in range(num_rows):
         for c in range(num_cols):
             if grid[r][c]:
-
                 draw_tile(dave, grid[r][c])
             else:
                 draw_tile(dave, Tile())
@@ -34,7 +33,7 @@ def draw_pattern(grid):
         dave.right(90)
         dave.forward(cell_size)
         dave.left(90)
-    input()
+    turtle.mainloop()
 
 
 def draw_tile(dave, tile):

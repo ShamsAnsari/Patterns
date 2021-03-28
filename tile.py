@@ -5,20 +5,21 @@ class Tile:
         self.b_c = bottom_color
         self.l_c = left_color
 
+    def matches_section(self, color1, color2):
+        if color1 is None or color2 is None:
+            return True
+        if color1.lower() == color2.lower():
+            return True
+        return False
+
     def matches(self, tile):
-        if self.t_c is not None and tile.t_c is not None and self.t_c != tile.t_c:
-            return False
-        if self.r_c is not None and tile.r_c is not None and self.r_c != tile.r_c:
-            return False
-        if self.b_c is not None and tile.b_c is not None and self.b_c != tile.b_c:
-            return False
-        if self.l_c is not None and tile.l_c is not None and self.l_c != tile.l_c:
-            return False
-        return True
+        return (self.matches_section(self.t_c, tile.t_c) and self.matches_section(self.r_c, tile.r_c)
+            and self.matches_section(self.b_c, tile.b_c) and self.matches_section(self.l_c, tile.l_c))
+
+
 
     def __repr__(self):
         return "t_c: {}, r_c: {}, b_c: {}, l_c: {}".format(self.t_c, self.r_c, self.b_c, self.l_c)
 
     def __str__(self):
         return self.__repr__()
-

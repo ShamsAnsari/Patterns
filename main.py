@@ -1,7 +1,7 @@
 from grid import *
 import graphics
 
-pattern = Grid(3,3)
-pattern.fill(0,0)
+pattern = Grid(10,10)
+pattern.create()
 print(pattern)
 graphics.draw_pattern(pattern.grid)

@@ -44,7 +44,7 @@ class Grid:
         for tile in self.tiles:
             if color_tile.matches(tile):
                 self.grid[r][c] = tile
-                break
+                return
 
     def create(self):
         for r in range(self.num_rows):
