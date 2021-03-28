@@ -27,23 +27,24 @@ class Grid:
                       self.tile8, self.tile9, self.tile10, self.tile11]
 
     def fill(self, r, c):
-        neighbors = self.get_neighbors(r, c)
+        n = self.get_neighbors(r, c)
         color_tile = Tile()
-        if neighbors[0] is not None:
-            color_tile.t_c = neighbors[0].b_c
-        if neighbors[1] is not None:
-            color_tile.r_c = neighbors[1].l_c
-        if neighbors[2] is not None:
-            color_tile.b_c = neighbors[2].t_c
-        if neighbors[3] is not None:
-            color_tile.l_c = neighbors[3].r_c
+        if n[0] is not None and self.grid[n[0][0]][n[0][1]] is not None:
+            color_tile.t_c = self.grid[n[0][0]][n[0][1]].b_c
 
-        correct_tile = None
+        if n[1] is not None and self.grid[n[1][0]][n[1][1]] is not None:
+            color_tile.r_c = self.grid[n[1][0]][n[1][1]].l_c
+
+        if n[2] is not None and self.grid[n[2][0]][n[2][1]]:
+            color_tile.b_c = self.grid[n[2][0]][n[2][1]].t_c
+
+        if n[3] is not None and self.grid[n[3][0]][n[3][1]]:
+            color_tile.l_c = self.grid[n[3][0]][n[3][1]].r_c
+
         for tile in self.tiles:
             if color_tile.matches(tile):
-                correct_tile = tile
-        if correct_tile is not None:
-            self.grid[r][c] = correct_tile
+                self.grid[r][c] = tile
+                break
 
     def create(self):
         for r in range(self.num_rows):
@@ -63,6 +64,11 @@ class Grid:
                 neighbors.append(None)
         return neighbors
 
-    def print_grid(self):
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        out = ""
         for i in range(self.num_rows):
-            print(self.grid[i])
+            out += str(self.grid[i]) + "\n"
+        return out
