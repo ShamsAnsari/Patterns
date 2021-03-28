@@ -29,22 +29,24 @@ class Grid:
     def fill(self, r, c):
         n = self.get_neighbors(r, c)
         color_tile = Tile()
+        print(n)
         if n[0] is not None and self.grid[n[0][0]][n[0][1]] is not None:
             color_tile.t_c = self.grid[n[0][0]][n[0][1]].b_c
 
         if n[1] is not None and self.grid[n[1][0]][n[1][1]] is not None:
             color_tile.r_c = self.grid[n[1][0]][n[1][1]].l_c
 
-        if n[2] is not None and self.grid[n[2][0]][n[2][1]]:
+        if n[2] is not None and self.grid[n[2][0]][n[2][1]] is not None:
             color_tile.b_c = self.grid[n[2][0]][n[2][1]].t_c
 
-        if n[3] is not None and self.grid[n[3][0]][n[3][1]]:
+        if n[3] is not None and self.grid[n[3][0]][n[3][1]] is not None:
             color_tile.l_c = self.grid[n[3][0]][n[3][1]].r_c
 
         for tile in self.tiles:
             if color_tile.matches(tile):
                 self.grid[r][c] = tile
                 return
+        print("No match:{},{} {}".format(r,c ,color_tile))
 
     def create(self):
         for r in range(self.num_rows):
@@ -56,7 +58,7 @@ class Grid:
 
     def get_neighbors(self, r, c):
         neighbors = []
-        neighbor_locs = [[-1, 0], [0, 1], [-1, 0], [0, -1]]
+        neighbor_locs = [[-1, 0], [0, 1], [1, 0], [0, -1]]
         for neighbor_loc in neighbor_locs:
             if self.in_bounds(r + neighbor_loc[0], c + neighbor_loc[1]):
                 neighbors.append([r + neighbor_loc[0], c + neighbor_loc[1]])

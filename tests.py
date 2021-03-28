@@ -1,7 +1,11 @@
 import unittest
 from grid import *
 
-
+class TestGrid(unittest.TestCase):
+    def test_neighbors(self):
+        grid = Grid(5,5)
+        point = (1,2)
+        neighbors_locs = [[-1,0], [0,1],[1,0], [0,-1]]
 class TestTile(unittest.TestCase):
 
     def test_init(self):
