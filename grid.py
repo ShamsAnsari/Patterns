@@ -26,6 +26,24 @@ class Grid:
         self.tiles = [self.tile1, self.tile2, self.tile3, self.tile4, self.tile5, self.tile6, self.tile7,
                       self.tile8, self.tile9, self.tile10, self.tile11]
 
+        # self.tile1 = Tile("green", "green", "blue", "red")
+        # self.tile2 = Tile("green", "blue", "green", "red")
+        # self.tile3 = Tile("green", "blue", "blue", "green")
+        # self.tile4 = Tile("red", "red", "green", "green")
+        # self.tile5 = Tile("red", "red", "blue","blue")
+        # self.tile6 = Tile("red", "green", "green", "blue")
+        # self.tile7 = Tile("yellow", "yellow", "red","yellow")
+        # self.tile8 = Tile("blue", "yellow", "green", "yellow")
+        # self.tile9 = Tile("green", "white", "red", "yellow")
+        # self.tile10 = Tile("green", "white", "yellow", "yellow")
+        # self.tile11 = Tile("yellow", "white", "red", "white")
+        # self.tile12 = Tile("blue", "white", "green", "white")
+        # self.tile13 = Tile("green", "yellow", "green", "white")
+        #
+        #
+        # self.tiles = [self.tile1, self.tile2, self.tile3, self.tile4, self.tile5, self.tile6, self.tile7,
+        #               self.tile8, self.tile9, self.tile10, self.tile11, self.tile12, self.tile13]
+
     def fill(self, r, c):
         n = self.get_neighbors(r, c)
         color_tile = Tile()
@@ -41,6 +59,7 @@ class Grid:
 
         if n[3] is not None and self.grid[n[3][0]][n[3][1]] is not None:
             color_tile.l_c = self.grid[n[3][0]][n[3][1]].r_c
+
 
         for tile in self.tiles:
             if color_tile.matches(tile):
