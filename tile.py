@@ -17,7 +17,7 @@ class Tile:
                 and self.matches_section(self.b_c, tile.b_c) and self.matches_section(self.l_c, tile.l_c))
 
     def __repr__(self):
-        return "t_c: {}, r_c: {}, b_c: {}, l_c: {}".format(self.t_c, self.r_c, self.b_c, self.l_c)
+        return "{}{}{}{}".format(self.t_c, self.r_c, self.b_c, self.l_c)
 
     def __str__(self):
         return self.__repr__()
